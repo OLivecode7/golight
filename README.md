@@ -4,6 +4,8 @@ Author: olive@code7.dev /  2023-10-23
 
 ### This program use the WS2812 tinygo driver, a Arduino Board and a push button to switch between different light modes.
 
+![Circuit used](./docs/golight-prototype0.jpg "Golight prototype")
+
 # Build and Flashing tools
 
 Tinygo install is required and additional installs for flashing Arduino borads :
