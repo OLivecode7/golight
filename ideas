@@ -1,0 +1,100 @@
+Install Tinygo :
+wget https://github.com/tinygo-org/tinygo/releases/download/v0.15.0/tinygo_0.15.0_amd64.deb
+sudo dpkg -i tinygo_0.15.0_amd64.deb
+
+Add path to bashrc:
+
+nano ~/.bashrc
+Scroll down to the end, add this line, press Ctrl+X then Y to save:
+
+export PATH=$PATH:/usr/local/tinygo/bin
+
+
+tinygo version to check if ok
+
+Outils pour Arduino UNO :
+sudo apt-get install gcc-avr
+sudo apt-get install avr-libc
+sudo apt-get install avrdude
+
+
+pour flasher arduino Uno :
+
+tinygo flash -target arduino -port /dev/ttyACM0 blinky1.go
+
+Pour Arduino nano 33BLE
+
+Installing BOSSA
+In order to flash your TinyGo programs onto the Arduino Nano33 BLE board, you will need to install the “bossac_arduino2” command line utility which is a special build of the BOSSA command line utilities.
+
+Linux 
+Download the bossac_arduino2 program from http://downloads.arduino.cc/tools/bossac-1.9.1-arduino2-linux64.tar.gz
+
+Extract the downloaded file to a directory on your computer.
+
+Make sure to add that directory into your PATH.
+
+tinygo flash -target=nano-33-ble -port /dev/ttyACM0 main.go
+
+https://randomnerdtutorials.com/guide-for-ws2812b-addressable-rgb-led-strip-with-arduino/
+
+https://www.hackster.io/alankrantas/tinygo-on-arduino-uno-an-introduction-6130f6
+
+
+
+Pour les Leds Strips :
+https://pkg.go.dev/tinygo.org/x/drivers/ws2812#New
+
+
+https://mechatrofice.com/arduino/arduino-counter-code-circuit-working
+
+
+
+	for {
+
+		if !button.Get() {
+			FillColor(leds[:], color.RGBA{R: 0xff, G: 0xff, B: 0xff})
+			ws.WriteColors(leds[:])
+			time.Sleep(10000 * time.Millisecond)
+		} else {
+
+			FillColor(leds[:], color.RGBA{R: 0x00, G: 0x00, B: 0x00})
+			ws.WriteColors(leds[:])
+			time.Sleep(10000 * time.Millisecond)
+			/*
+				FillThreeColors(leds[:], color.RGBA{R: 0xff, G: 0x00, B: 0x00}, color.RGBA{R: 0x00, G: 0xff, B: 0x00}, color.RGBA{R: 0x00, G: 0x00, B: 0xff})
+				ws.WriteColors(leds[:])
+				time.Sleep(100 * time.Millisecond)
+
+				FillThreeColors(leds[:], color.RGBA{R: 0x00, G: 0xff, B: 0x00}, color.RGBA{R: 0x00, G: 0x00, B: 0xff}, color.RGBA{R: 0xff, G: 0x00, B: 0x00})
+				ws.WriteColors(leds[:])
+				time.Sleep(100 * time.Millisecond)
+
+				FillThreeColors(leds[:], color.RGBA{R: 0x00, G: 0x00, B: 0xff}, color.RGBA{R: 0xff, G: 0x00, B: 0x00}, color.RGBA{R: 0x00, G: 0xff, B: 0x00})
+				ws.WriteColors(leds[:])
+				time.Sleep(100 * time.Millisecond)*/
+		}
+
+		/*
+
+			FillGradientColors(leds[:], color.RGBA{R: 0xff, G: 0xff, B: 0xff}, color.RGBA{R: 0x00, G: 0x00, B: 0x00})
+			ws.WriteColors(leds[:])
+			time.Sleep(10000 * time.Millisecond)*/
+
+	}
+
+
+
+
+
+persist data file formatted : 
+
+https://github.com/tinygo-org/tinyfs/tree/release
+
+https://forum.arduino.cc/t/measurement-of-bandgap-voltage/38215/16
+
+https://forum.arduino.cc/t/making-accurate-analog-measurements-and-detecting-power-fails/526108/3
+
+https://forum.phpoc.com/blogs/iot-lover/1289-arduino-pid-controller-auto-tuning-library-and-example-for-dc-motor
+
+
